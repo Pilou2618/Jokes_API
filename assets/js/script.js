@@ -3,6 +3,7 @@ const form = document.getElementById("jokeForm");
 const tableBody = document.getElementById("table");
 const deleteAllBtn = document.getElementById("DeleteAll");
 
+
     // Génération des blagues selon le formulaire
     form.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -21,7 +22,7 @@ const deleteAllBtn = document.getElementById("DeleteAll");
               const jokes = data.jokes || [data];
 
               for (let i = 0; i < jokes.length; i++) {
-                  addRow(jokes[i]);
+                  tableBody.appendChild(addRow(jokes[i]));
             }
             })
         .catch(err => console.error(err));
@@ -55,7 +56,7 @@ const deleteAllBtn = document.getElementById("DeleteAll");
       row.appendChild(tdJoke);
       row.appendChild(tdAction);
 
-      tableBody.appendChild(row);
+      return row;
     }
 
     // Supprimer tout
